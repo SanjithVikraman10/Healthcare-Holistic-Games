@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToeTrek: Journey into Reflexology</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: url('https://images3.alphacoders.com/133/1332803.png');
+      background-size: cover;
+      background-position: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
+
+    #container {
+      max-width: 800px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    #title {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #intro {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    #playButton {
+      padding: 15px 30px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="title">TOE TREK: JORNEY INTO REFLEXOLOGY</div>
+    <div id="intro">
+      Welcome to the Reflexology Game, an interactive journey into the fascinating world of foot reflexology! Your goal is to identify reflexology points on the foot and connect them with their corresponding body parts. Make accurate matches to earn a rewarding +10 points, but beware – incorrect selections come with a penalty of -5 points. Immerse yourself in this unique learning experience and see how well you can navigate the intricate map of reflex zones. Enjoy the game and aim for the highest score!
+    </div>
+    <a href="{{url_for('reflexology_new')}}"class="button">Play Now</a>
+  </div>
+
+</body>
+
+</html>

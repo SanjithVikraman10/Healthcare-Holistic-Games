@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static\patient-styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container" style=" font-family: 'San Francisco', Arial, sans-serif; font-size: 33px; font-weight: bolder;">
+            <img src="static\svasthya.png" alt="Your Logo" class="logo">
+            Health Connect - Care Beyond Boundaries!
+        </div>
+        <div class="header-buttons">
+        <a href="https://svasthya.ccbp.tech/" target="_blank" class="button medicine-delivery-button">Chatbot</a>
+    </div>
+    <div class="header-buttons">
+        <a href="{{ url_for('logout') }}" class="button medicine-delivery-button">Logout</a>
+    </div>
+    
+    </header>
+
+    <div class="container">
+        <h1 class="main-heading">Welcome to the Patient Portal</h1>
+        
+        <div class="features">
+            <div class="feature">
+                <h2>Nearby Hospital</h2>
+                <p>Get immediate help in case of emergencies.</p>
+                <a href="{{ url_for('hospital') }}" class="button">Find Hospital</a>
+            </div>
+
+            <div class="feature">
+                <h2>Nearby Pharmacy</h2>
+                <p>Find the nearest pharmacy for your medications.</p>
+                <a href="{{ url_for('nearby_pharmacy') }}" class="button">Find Pharmacy</a>
+
+            </div>
+
+            <div class="feature">
+                <h2>Video Consultation</h2>
+                <p>Consult with healthcare professionals via video calls.</p>
+                <a href="#video-consultation" class="button">Schedule Video Call</a>
+            </div>
+
+            <div class="feature" style="display: block; margin: 0 auto;">
+    <h2>Unlock Adventures in Learning & Play!</h2>
+    <p>Dive into captivating lessons and exhilarating health-centric games for an epic journey!</p>
+    <a href="{{ url_for('games_index') }}" class="button">Start Your Quest</a>
+</div>
+        </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Patient Portal</p>
+        </div>
+    </footer>
+</body>
+</html>

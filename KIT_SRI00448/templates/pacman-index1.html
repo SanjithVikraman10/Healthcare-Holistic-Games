@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man Word Hunt</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://wallpapercave.com/wp/wp2003326.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #heading-box {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 5%; /* Adjusted top value */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0; /* Remove default margin */
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6; /* Adjust the line height */
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            transform: translate(0, -50%);
+        }
+
+        #game-container {
+            display: none;
+        }
+
+        #play-button {
+            padding: 15px 30px;
+            font-size: 24px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px; /* Rounded corners */
+            position: fixed;
+            bottom: 20%;
+            right: 25%;
+            transform: translate(0, 50%);
+        }
+
+        #translucent-box {
+            background-color: rgba(0, 0, 0, 0.861); /* Semi-transparent black */
+            padding: 20px;
+            border-radius: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%; /* Adjust the maximum width */
+        }
+
+        #pacman-iframe {
+            width: 600px;
+            height: 600px;
+            border: none;
+            margin-top: 20px;
+        }
+
+        #result-message {
+            color: #fff;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="heading-box">
+        <h1>PACMAN LEXI-QUEST : UNRAVEL THE MAZE OF WORDS</h1>
+    </div>
+
+    <p>Welcome to Pac-Man Word Hunt! Navigate Pac-Man through the maze, devouring letter pellets to reveal a secret word. Use arrow keys to move and the space bar to digest letters. Beware of ghosts! Spell the word correctly to win, but choose wisely—mistakes can be game-ending. Can you conquer the maze and unravel the mystery word? Let the Pac-Man Word Hunt begin!</p>
+
+    <button id="play-button" onclick="startGame()">Play</button>
+
+    <div id="game-container">
+        <iframe id="pacman-iframe" src="" frameborder="0"></iframe>
+        <div id="translucent-box">
+            <div id="result-message"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port + '/game');
+
+        socket.on('connect', function() {
+            console.log('Connected to server');
+        });
+
+        socket.on('game_result', function(data) {
+            alert(data.result);  // Display the game result in a simple alert popup
+        });
+
+        socket.on('update_result_message', function(data) {
+            updateResultMessage(data.message);  // Update the result message on the frontend
+        });
+
+        // Function to update the result message
+        function updateResultMessage(message) {
+            document.getElementById('result-message').innerText = message;
+        }
+
+        function startGame() {
+            // Show the game container
+            document.getElementById('game-container').style.display = 'block';
+
+            // Hide the play button
+            document.getElementById('play-button').style.display = 'none';
+
+            // Set the iframe source to start the game
+            document.getElementById('pacman-iframe').src = 'http://127.0.0.1:5000/play_game';
+        }
+    </script>
+
+</body>
+</html>

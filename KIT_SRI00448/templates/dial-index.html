@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Dial Pad</title>
+  <link rel="stylesheet" href="static\\dial-style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+    <div id="helpline-display" style="text-align: center; font-size: larger; font-weight: 800;">Click 'Next' to call a helpline number.</div>
+    <div id="learn-message" style="text-align: center; font-size: large; font-weight: 600;">Learn this number in 10 seconds.</div>
+ 
+    <button id="dial-button" onclick="dialHelpline()" style="display: none">
+      Dial
+    </button>
+    <br>
+    <div class="button-container">
+    <button id="next-button" onclick="nextHelpline()" style="padding: 10px 20px; background-color: #4CAF50; color: white; display: flex;
+  justify-content: center;
+  align-items: center; margin-left: 656px;
+">Next</button>
+<br>
+    </div>
+    <div id="try-it-message" style="text-align: center; font-size: large; font-weight: 600;">Try it!</div>
+    <div id="result-message" style="font-size: 18px; display: none; font-weight: bolder; text-align: center;"></div>
+<div></div>
+<div class="container">
+  <div id="output"></div>
+  <div class="row">
+    <div class="digit" id="one">1</div>
+    <div class="digit" id="two">2
+      <div class="sub">ABC</div>
+    </div>
+    <div class="digit" id="three">3
+      <div class="sub">DEF</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="digit" id="four">4
+      <div class="sub">GHI</div>
+    </div>
+    <div class="digit" id="five">5
+      <div class="sub">JKL</div>
+    </div>
+    <div class="digit">6
+      <div class="sub">MNO</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="digit">7
+      <div class="sub">PQRS</div>
+    </div>
+    <div class="digit">8
+      <div class="sub">TUV</div>
+    </div>
+    <div class="digit">9
+      <div class="sub">WXYZ</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="digit">*
+    </div>
+    <div class="digit">0
+    </div>
+    <div class="digit">#
+    </div>
+  </div>
+  <div class="botrow"><i class="fa fa-star-o dig" aria-hidden="true"></i>
+    <div id="call"><i class="fa fa-phone" aria-hidden="true"></i></div>
+    <i class="fa fa-long-arrow-left dig" aria-hidden="true"></i>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script><script  src="static\\js\\dial-script.js"></script>
+<script>
+      const helplineNumbers = {
+        Police: "100",
+        Fire: "101",
+        Ambulance: "102",
+        "Women Helpline": "1091",
+        "Child Helpline": "1098",
+        "Senior Citizens Helpline": "1291",
+      };
+
+      let currentHelpline = null;
+      let tryItTimer;
+      let learnTimer;
+
+      function getRandomHelpline() {
+        const helplineNames = Object.keys(helplineNumbers);
+        const randomIndex = Math.floor(Math.random() * helplineNames.length);
+        const helplineName = helplineNames[randomIndex];
+        const helplineNumber = helplineNumbers[helplineName];
+        return { name: helplineName, number: helplineNumber };
+      }
+
+      function dialHelpline() {
+        const resultMessage = document.getElementById("result-message");
+        if (currentHelpline) {
+          
+          resultMessage.style.display = "block";
+          // Assess whether the dialed number matches the displayed number
+          const dialedNumber = $("#output").text().trim();
+
+          if (dialedNumber === currentHelpline.number) {
+            resultMessage.innerText = "Correct! You dialed the right number.";
+            resultMessage.style.color = "green";
+          } else {
+            resultMessage.innerText = "Incorrect! Please try again.";
+            resultMessage.style.color = "red";
+          }
+
+          // Reset the dialer number
+          document.getElementById("output").innerHTML = "";
+
+
+        } else {
+          resultMessage.innerText = "Click 'Next' to get a helpline number.";
+          resultMessage.style.color = "black";
+        }
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          resultMessage.style.display = "none";
+        }, 3000);
+      }
+
+      function updateTimer(seconds) {
+        document.getElementById("timer").innerText = seconds;
+        const secondsLeft = document.getElementById("seconds-left");
+        secondsLeft.innerText = `Seconds Left: ${seconds}`;
+      }
+
+      function nextHelpline() {
+        clearTimeout(tryItTimer); // Clear the previous timer, if any
+        clearTimeout(learnTimer); // Clear the learn timer, if any
+      
+        const resultMessage = document.getElementById("result-message");
+        resultMessage.style.display = "none"; // Hide the result message
+      
+        document.getElementById("try-it-message").style.display = "none";
+        document.getElementById("learn-message").style.display = "none";
+      
+        currentHelpline = getRandomHelpline();
+        document.getElementById("helpline-display").innerText = `${currentHelpline.name}: ${currentHelpline.number}`;
+      
+        // Set a timer to display "Learn this number in 10 seconds" message
+        learnTimer = setTimeout(() => {
+          document.getElementById("helpline-display").style.display = "block"
+          document.getElementById("learn-message").style.display = "block";
+          
+          // After 10 seconds, hide the message and show the dial button
+          tryItTimer = setTimeout(() => {
+            document.getElementById("learn-message").style.display = "none";
+            document.getElementById("result-message").style.display = "none";
+            document.getElementById("helpline-display").style.display = "none";
+            document.getElementById("call").style.display = "block";
+          }, 10000);
+        }, 0);
+      }
+    </script>
+</body>
+</html>
+

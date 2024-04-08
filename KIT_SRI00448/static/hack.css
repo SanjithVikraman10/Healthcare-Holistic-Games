@@ -1,0 +1,107 @@
+/* Reset some default styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Center the content both horizontally and vertically */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Style the background image */
+.background-image {
+    background-image: url("img.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* Style the form container */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Style the main heading */
+.main-heading {
+    color: #007BFF;
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Style the main paragraph */
+.main-paragraph {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Style the input fields */
+input[type="text"] {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    background-color: #f5f5f5;
+}
+
+/* Style the Find Nearest Location button */
+.button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the button */
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the result section */
+#result {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 24px;
+    color: white;
+}
+
+/* Style the Get My Location button */
+#get-location-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px; /* Add some margin to match the existing styling */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the Get My Location button */
+#get-location-button:hover {
+    background-color: #0056b3;
+}

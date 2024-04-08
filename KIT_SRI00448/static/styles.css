@@ -1,0 +1,124 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'San Francisco', Arial, sans-serif;
+    font-weight: 800;
+    background-color: #282c35; /* Dark background color */
+    color: #fff; /* White text color */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    background-color: #1a1e24; /* Darker header background color */
+    color: #fff;
+    padding: 2px 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    max-width: 50px;
+    height: auto;
+    margin-left: 40px;
+    border-radius: 10px;
+}
+
+.main-heading {
+    font-family: 'San Francisco', Arial, sans-serif;
+    font-weight: 800;
+    color: #008080; /* Blue heading color */
+    font-size: 36px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-container {
+    background-color: #1a1e24; /* Darker feature background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #008080; /* Blue heading color */
+    font-size: 24px;
+    font-weight: 700;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+select {
+    background-color: #f9f9f9;
+}
+
+button {
+    width: 50%;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #008080; /* Blue button background color */
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004855; /* Darker blue on hover */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.form-container:first-child {
+    margin-top: 0;
+}
+
+.form-container + .form-container {
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Quiz</title>
+    <link rel="stylesheet" type="text/css" href="static/quiz-styles.css">
+</head>
+<body>
+    <a href="/patient_home.html" id="back-button">Go Back</a>
+    <div class="container">
+        <div class="feature">
+            <h2>Physical Health Quiz</h2>
+            <p>Test your knowledge of physical health with this quiz.</p>
+            <a href="{{ url_for('phy_health') }}" class="button">Take Quiz</a>
+        </div>
+        <div class="feature">
+            <h2>Mental Health Quiz</h2>
+            <p>Explore your understanding of mental health in this quiz.</p>
+            <a href="{{ url_for('men_health') }}" class="button">Take Quiz</a>
+        </div>
+        
+    </div>
+</body>
+</html>

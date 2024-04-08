@@ -1,0 +1,155 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .nearest-pharmacy {
+    color: white;
+    font-weight: bold;
+  }
+  
+  body::before {
+    content: "";
+    background-image: url('/static/img.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.7; /* Adjust the opacity value as needed */
+  }
+  
+  
+  .background-overlay {
+    background-color: rgba(0, 0, 0, 0.8); 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 1; /* Keep this at 1 for full opacity of the overlay */
+  }
+  
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background color */
+    color: #333; /* Dark text color */
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 36px;
+    color: #008080; /* Teal heading color */
+    margin-top: 30px;
+    font-weight: bold;
+  }
+  
+  form {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button[type="submit"], button[type="button"] {
+    background-color: #008080; /* Teal button background color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"] {
+    margin-top: 10px;
+  }
+  
+  p {
+    font-size: 20px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  label[for="latitude"] {
+    font-size: 16px;
+    margin-right: 600px;
+    text-align: center;
+  }
+
+label[for="longitude"] {
+    font-size: 16px;
+    margin-right: 589px;
+    text-align: center;
+  }
+  
+  input[type="text"][id="latitude"], input[type="text"][id="longitude"] {
+    width: 100px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    margin-right: 400px;
+  }
+  
+  #location-message {
+    font-size: 16px;
+    color: #008080; /* Teal message color */
+    margin-top: 20px;
+  }
+  
+  /* Add styling for the result message */
+  #result {
+    font-size: 20px;
+    color: #008080; /* Teal result message color */
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  #back-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#back-button:hover {
+    background-color: darkred;
+}

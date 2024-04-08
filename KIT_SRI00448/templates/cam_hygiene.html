@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CamHygiene Pro</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    #container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #webcam-container {
+      margin-right: 20px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      height: 350px;
+    }
+    #webcam-container video {
+        width: 0%;
+        height: -10%;
+      }
+    #label-container {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 310px;
+      height: 310px;
+      text-align:center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+
+    .prediction {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    #timer-container {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #9f2222;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 36px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>CamHygiene Pro</h1>
+  <div id="container">
+    <div id="webcam-container">
+      <video autoplay playsinline></video>
+    </div>
+    <div id="label-container"></div>
+  </div>
+  <div id="timer-container">Timer: 02:00</div>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script type="text/javascript">
+    const URL = "https://teachablemachine.withgoogle.com/models/iCnPZYBon/";
+
+    let model, webcam, labelContainer, maxPredictions;
+    let timerMinutes = 2;
+    let timerSeconds = 0;
+
+    async function init() {
+      resetTimer();
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+
+      model = await tmImage.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+
+      const flip = true;
+      webcam = new tmImage.Webcam(350, 350, flip);
+
+      await webcam.setup({ facingMode: 'user' });
+      await webcam.play();
+
+      document.getElementById("webcam-container").appendChild(webcam.canvas);
+      labelContainer = document.getElementById("label-container");
+
+      startTimer();
+      loop();
+    }
+
+    function resetTimer() {
+      timerMinutes = 2;
+      timerSeconds = 0;
+      updateTimerDisplay();
+    }
+
+    function startTimer() {
+      const timerInterval = setInterval(() => {
+        if (timerMinutes === 0 && timerSeconds === 0) {
+          displayMessage("You failed. Retry!");
+          stopPrediction();
+          resetTimer();
+          clearInterval(timerInterval);
+        } else {
+          updateTimerDisplay();
+          updateTimer();
+        }
+      }, 1000);
+    }
+
+    function updateTimer() {
+      if (timerSeconds === 0) {
+        timerMinutes--;
+        timerSeconds = 59;
+      } else {
+        timerSeconds--;
+      }
+    }
+
+    function updateTimerDisplay() {
+      const minutesDisplay = timerMinutes < 10 ? `0${timerMinutes}` : timerMinutes;
+      const secondsDisplay = timerSeconds < 10 ? `0${timerSeconds}` : timerSeconds;
+      document.getElementById("timer-container").innerHTML = `Timer: ${minutesDisplay}:${secondsDisplay}`;
+    }
+
+    async function loop() {
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    }
+
+    async function predict() {
+      const prediction = await model.predict(webcam.canvas);
+      labelContainer.innerHTML = ""; // Clear previous predictions
+
+      for (let i = 0; i < maxPredictions; i++) {
+        const className = prediction[i].className;
+        const probability = (prediction[i].probability * 100).toFixed(2);
+
+        const classPrediction = `<div class="prediction">${className}: ${probability}%</div>`;
+        labelContainer.innerHTML += classPrediction;
+      }
+    }
+
+    function stopPrediction() {
+      console.log("Prediction stopped");
+    }
+
+    function displayMessage(message) {
+      alert(message);
+    }
+
+    init(); // Initialize the webcam and prediction loop when the page loads
+  </script>
+</body>
+</html>

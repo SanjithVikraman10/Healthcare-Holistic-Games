@@ -1,0 +1,128 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'San Francisco', Arial, sans-serif;
+  background-color: #282c35; /* Dark background color */
+  margin: 0;
+  padding: 0;
+  color: #fff; /* White text color */
+}
+
+img {
+  height: 50px;
+  width: 50px;
+  vertical-align: middle;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  background-color: #1a1e24; /* Darker header background color */
+  color: #fff;
+  padding: 2px 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  max-width: 50px;
+  height: auto;
+  margin-left: 40px;
+  border-radius: 10px;
+}
+
+.header-buttons {
+  margin-right: 20px; /* Add right margin to separate the button from the logo */
+}
+
+.main-heading {
+  font-family: 'San Francisco', Arial, sans-serif;
+  font-weight: 800;
+  color: #008080; /* Blue heading color */
+  font-size: 36px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.feature {
+  font-family: 'San Francisco', Arial, sans-serif;
+  flex-basis: calc(33.33% - 20px);
+  background-color: #1a1e24; /* Darker feature background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.feature h2 {
+  font-family: 'San Francisco', Arial, sans-serif;
+  font-size: 24px;
+  color: #008080; /* Blue heading color */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.feature p {
+  font-size: 16px;
+  color: #ccc; /* Light gray text color */
+  margin-bottom: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #008080; /* Blue button background color */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.footer {
+  background-color: #1a1e24; /* Darker footer background color */
+  color: #ccc; /* Light gray text color */
+  text-align: center;
+}
+
+.accept-voice-call-button,
+.accept-video-call-button {
+  background-color: #e74c3c; /* Red button background color */
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  vertical-align: middle;
+  width: fit-content;
+  margin-right: 40px;
+  margin-top: 0px;
+}
+
+.accept-voice-call-button:hover,
+.accept-video-call-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}

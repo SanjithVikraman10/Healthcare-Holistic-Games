@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reflexology Game</title>
+  <style>
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('https://wallpapers.com/images/hd/plain-dark-green-gradient-0dnr91m9jrxynkuq.webp') center/cover;
+  overflow-y: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:white
+}
+
+    #title {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: white; /* Choose a color for the title */
+    }
+
+
+    #questionContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    #questionText {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: white; /* Choose a color for the text */
+    }
+
+    #bodyPartName {
+      margin-top: 10px;
+      font-size: 28px;
+      color: white; /* Choose a color for the text */
+    }
+
+    #footImage {
+  position: relative;
+  width: 60%;
+  max-height: 70vh;
+  margin: 0 auto 20px;
+  display: block;
+  left: 15%; /* Add this line to center horizontally */
+  transform: translateX(-50%); /* Add this line to adjust position */
+}
+
+    .reflexologyPoint {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: red;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #lowerBackGlutealArea1 { left: 325px; top: 542px; }
+    #lowerBackGlutealArea2 { left: 790px; top: 543px; }
+    #sciaticNerve1 { left: 304px; top: 501px; }
+    #sciaticNerve2 { left: 803px; top: 502px; }
+    #ascendingColon { left: 315px; top: 489px; }
+    #legKnee1 { left: 292px; top: 462px; }
+    #legKnee2 { left: 821px; top: 462px; }
+    #elbow1 { left: 291px; top: 434px; }
+    #elbow2 { left: 820px; top: 434px; }
+    #kidney1 { left: 338px; top: 399px; }
+    #kidney2 { left: 772px; top: 400px; }
+    #liver1 { left: 293px; top: 388px; }
+    #liver2 { left: 827px; top: 394px; }
+    #gallBladder { left: 303px; top: 370px; }
+    #diaphragmSolarPlexus1 { left: 273px; top: 334px; }
+    #diaphragmSolarPlexus2 { left: 839px; top: 334px; }
+    #shoulder1 { left: 281px; top: 312px; }
+    #shoulder2 { left: 834px; top: 311px; }
+    #arm1 { left: 260px; top: 286px; }
+    #arm2 { left: 853px; top: 286px; }
+    #armpit1 { left: 266px; top: 262px; }
+    #armpit2 { left: 846px; top: 261px; }
+    #eyeEar1 { left: 283px; top: 247px; }
+    #eyeEar2 { left: 829px; top: 245px; }
+    #neck1 { left: 271px; top: 232px; }
+    #neck2 { left: 839px; top: 232px; }
+    #teethSinuses1 { left: 271px; top: 225px; }
+    #teethSinuses2 { left: 299px; top: 208px; }
+    #teethSinuses3 { left: 327px; top: 181px; }
+    #teethSinuses4 { left: 360px; top: 178px; }
+    #teethSinuses5 { left: 752px; top: 179px; }
+    #teethSinuses6 { left: 786px; top: 188px; }
+    #teethSinuses7 { left: 815px; top: 207px; }
+    #teethSinuses8 { left: 838px; top: 232px; }
+    #headBrain1 { left: 409px; top: 142px; }
+    #headBrain2 { left: 703px; top: 145px; }
+    #pituitary1 { left: 396px; top: 166px; }
+    #pituitary2 { left: 713px; top: 167px; }
+    #throat1 { left: 388px; top: 200px; }
+    #throat2 { left: 727px; top: 196px; }
+    #thyroidParathyroid1 { left: 405px; top: 197px; }
+    #thyroidParathyroid2 { left: 708px; top: 196px; }
+    #trapezius1 { left: 358px; top: 218px; }
+    #trapezius2 { left: 749px; top: 216px; }
+    #esophagus1 { left: 401px; top: 247px; }
+    #esophagus2 { left: 709px; top: 243px; }
+    #cervicalSpine { left: 415px; top: 296px; }
+    #heart { left: 771px; top: 275px; }
+    #stomach1 { left: 380px; top: 327px; }
+    #stomach2 { left: 729px; top: 328px; }
+    #adrenals1 { left: 352px; top: 353px; }
+    #adrenals2 { left: 760px; top: 353px; }
+    #pancreas1 { left: 376px; top: 377px; }
+    #pancreas2 { left: 738px; top: 377px; }
+    #duodenum1 { left: 377px; top: 395px; }
+    #duodenum2 { left: 739px; top: 395px; }
+    #lumbarSpine1 { left: 403px; top: 417px; }
+    #lumbarSpine2 { left: 712px; top: 418px; }
+    #ureter1 { left: 374px; top: 441px; }
+    #ureter2 { left: 739px; top: 441px; }
+    #bladder1 { left: 405px; top: 466px; }
+    #bladder2 { left: 702px; top: 466px; }
+    #smallIntestine { left: 375px; top: 459px; }
+    #rectum { left: 713px; top: 480px; }
+    #sacrum1 { left: 409px; top: 518px; }
+    #sacrum2 { left: 704px; top: 520px; }
+    #spleen { left: 811px; top: 379px; }
+    #descendingColon { left: 798px; top: 485px; }
+
+    #gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+
+#answerMessage {
+  margin-top: 20px;
+  font-size: 24px;
+  color: white;
+  text-align: center; /* Center the text */
+}
+
+#score {
+  margin-top: 20px;
+  font-size: 32px;
+  color: white;
+  text-align: center; /* Center the text */
+}
+
+    #nextButton {
+      margin-top: 5px;
+      padding: 10px;
+      font-size: 20px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+    <div id="title">REFLEXOLOGY GAME</div>
+
+    <div id="gameContainer">
+  
+      <div id="questionContainer">
+        <div id="questionText">Question:</div>
+        <div id="bodyPartName"></div>
+        <button id="nextButton" onclick="displayNextBodyPart()">Next</button>
+      </div>
+    <div id="footImage">
+      <!-- Insert your foot image here -->
+      <img src="static\\img\\foot-remove-labels.png" alt="Foot Image">
+
+      <div class="reflexologyPoint" id="lowerBackGlutealArea1" onclick="checkAnswer('lowerBackGlutealArea1')" style="position: absolute; left: 325px; top: 542px;"></div>
+      <div class="reflexologyPoint" id="lowerBackGlutealArea2" onclick="checkAnswer('lowerBackGlutealArea2')" style="position: absolute; left: 790px; top: 543px;"></div>
+      <div class="reflexologyPoint" id="sciaticNerve1" onclick="checkAnswer('sciaticNerve1')" style="position: absolute; left: 304px; top: 501px;"></div>
+      <div class="reflexologyPoint" id="sciaticNerve2" onclick="checkAnswer('sciaticNerve2')" style="position: absolute; left: 803px; top: 502px;"></div>
+      <div class="reflexologyPoint" id="ascendingColon" onclick="checkAnswer('ascendingColon')" style="position: absolute; left: 315px; top: 489px;"></div>
+      <div class="reflexologyPoint" id="legKnee1" onclick="checkAnswer('legKnee1')" style="position: absolute; left: 292px; top: 462px;"></div>
+      <div class="reflexologyPoint" id="legKnee2" onclick="checkAnswer('legKnee2')" style="position: absolute; left: 821px; top: 462px;"></div>
+      <div class="reflexologyPoint" id="elbow1" onclick="checkAnswer('elbow1')" style="position: absolute; left: 291px; top: 434px;"></div>
+      <div class="reflexologyPoint" id="elbow2" onclick="checkAnswer('elbow2')" style="position: absolute; left: 820px; top: 434px;"></div>
+      <div class="reflexologyPoint" id="kidney1" onclick="checkAnswer('kidney1')" style="position: absolute; left: 338px; top: 399px;"></div>
+      <div class="reflexologyPoint" id="kidney2" onclick="checkAnswer('kidney2')" style="position: absolute; left: 772px; top: 400px;"></div>
+      <div class="reflexologyPoint" id="liver1" onclick="checkAnswer('liver1')" style="position: absolute; left: 293px; top: 388px;"></div>
+      <div class="reflexologyPoint" id="liver2" onclick="checkAnswer('liver2')" style="position: absolute; left: 827px; top: 394px;"></div>
+      <div class="reflexologyPoint" id="gallBladder" onclick="checkAnswer('gallBladder')" style="position: absolute; left: 303px; top: 370px;"></div>
+      <div class="reflexologyPoint" id="diaphragmSolarPlexus1" onclick="checkAnswer('diaphragmSolarPlexus1')" style="position: absolute; left: 273px; top: 334px;"></div>
+      <div class="reflexologyPoint" id="diaphragmSolarPlexus2" onclick="checkAnswer('diaphragmSolarPlexus2')" style="position: absolute; left: 839px; top: 334px;"></div>
+      <div class="reflexologyPoint" id="shoulder1" onclick="checkAnswer('shoulder1')" style="position: absolute; left: 281px; top: 312px;"></div>
+      <div class="reflexologyPoint" id="shoulder2" onclick="checkAnswer('shoulder2')" style="position: absolute; left: 834px; top: 311px;"></div>
+      <div class="reflexologyPoint" id="arm1" onclick="checkAnswer('arm1')" style="position: absolute; left: 260px; top: 286px;"></div>
+      <div class="reflexologyPoint" id="arm2" onclick="checkAnswer('arm2')" style="position: absolute; left: 853px; top: 286px;"></div>
+      <div class="reflexologyPoint" id="armpit1" onclick="checkAnswer('armpit1')" style="position: absolute; left: 266px; top: 262px;"></div>
+      <div class="reflexologyPoint" id="armpit2" onclick="checkAnswer('armpit2')" style="position: absolute; left: 846px; top: 261px;"></div>
+      <div class="reflexologyPoint" id="eyeEar1" onclick="checkAnswer('eyeEar1')" style="position: absolute; left: 283px; top: 247px;"></div>
+      <div class="reflexologyPoint" id="eyeEar2" onclick="checkAnswer('eyeEar2')" style="position: absolute; left: 829px; top: 245px;"></div>
+      <div class="reflexologyPoint" id="neck1" onclick="checkAnswer('neck1')" style="position: absolute; left: 271px; top: 232px;"></div>
+      <div class="reflexologyPoint" id="neck2" onclick="checkAnswer('neck2')" style="position: absolute; left: 839px; top: 232px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses1" onclick="checkAnswer('teethSinuses1')" style="position: absolute; left: 271px; top: 225px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses2" onclick="checkAnswer('teethSinuses2')" style="position: absolute; left: 299px; top: 208px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses3" onclick="checkAnswer('teethSinuses3')" style="position: absolute; left: 327px; top: 181px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses4" onclick="checkAnswer('teethSinuses4')" style="position: absolute; left: 360px; top: 178px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses5" onclick="checkAnswer('teethSinuses5')" style="position: absolute; left: 752px; top: 179px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses6" onclick="checkAnswer('teethSinuses6')" style="position: absolute; left: 786px; top: 188px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses7" onclick="checkAnswer('teethSinuses7')" style="position: absolute; left: 815px; top: 207px;"></div>
+      <div class="reflexologyPoint" id="teethSinuses8" onclick="checkAnswer('teethSinuses8')" style="position: absolute; left: 838px; top: 232px;"></div>
+      <div class="reflexologyPoint" id="headBrain1" onclick="checkAnswer('headBrain1')" style="position: absolute; left: 409px; top: 142px;"></div>
+      <div class="reflexologyPoint" id="headBrain2" onclick="checkAnswer('headBrain2')" style="position: absolute; left: 703px; top: 145px;"></div>
+      <div class="reflexologyPoint" id="pituitary1" onclick="checkAnswer('pituitary1')" style="position: absolute; left: 396px; top: 166px;"></div>
+      <div class="reflexologyPoint" id="pituitary2" onclick="checkAnswer('pituitary2')" style="position: absolute; left: 713px; top: 167px;"></div>
+      <div class="reflexologyPoint" id="throat1" onclick="checkAnswer('throat1')" style="position: absolute; left: 388px; top: 200px;"></div>
+      <div class="reflexologyPoint" id="throat2" onclick="checkAnswer('throat2')" style="position: absolute; left: 727px; top: 196px;"></div>
+      <div class="reflexologyPoint" id="thyroidParathyroid1" onclick="checkAnswer('thyroidParathyroid1')" style="position: absolute; left: 405px; top: 197px;"></div>
+      <div class="reflexologyPoint" id="thyroidParathyroid2" onclick="checkAnswer('thyroidParathyroid2')" style="position: absolute; left: 708px; top: 196px;"></div>
+      <div class="reflexologyPoint" id="trapezius1" onclick="checkAnswer('trapezius1')" style="position: absolute; left: 358px; top: 218px;"></div>
+      <div class="reflexologyPoint" id="trapezius2" onclick="checkAnswer('trapezius2')" style="position: absolute; left: 749px; top: 216px;"></div>
+      <div class="reflexologyPoint" id="esophagus1" onclick="checkAnswer('esophagus1')" style="position: absolute; left: 401px; top: 247px;"></div>
+      <div class="reflexologyPoint" id="esophagus2" onclick="checkAnswer('esophagus2')" style="position: absolute; left: 709px; top: 243px;"></div>
+      <div class="reflexologyPoint" id="cervicalSpine" onclick="checkAnswer('cervicalSpine')" style="position: absolute; left: 415px; top: 296px;"></div>
+      <div class="reflexologyPoint" id="heart" onclick="checkAnswer('heart')" style="position: absolute; left: 771px; top: 275px;"></div>
+      <div class="reflexologyPoint" id="stomach1" onclick="checkAnswer('stomach1')" style="position: absolute; left: 380px; top: 327px;"></div>
+      <div class="reflexologyPoint" id="stomach2" onclick="checkAnswer('stomach2')" style="position: absolute; left: 729px; top: 328px;"></div>
+      <div class="reflexologyPoint" id="adrenals1" onclick="checkAnswer('adrenals1')" style="position: absolute; left: 352px; top: 353px;"></div>
+      <div class="reflexologyPoint" id="adrenals2" onclick="checkAnswer('adrenals2')" style="position: absolute; left: 760px; top: 353px;"></div>
+      <div class="reflexologyPoint" id="pancreas1" onclick="checkAnswer('pancreas1')" style="position: absolute; left: 376px; top: 377px;"></div>
+      <div class="reflexologyPoint" id="pancreas2" onclick="checkAnswer('pancreas2')" style="position: absolute; left: 738px; top: 377px;"></div>
+      <div class="reflexologyPoint" id="duodenum1" onclick="checkAnswer('duodenum1')" style="position: absolute; left: 377px; top: 395px;"></div>
+      <div class="reflexologyPoint" id="duodenum2" onclick="checkAnswer('duodenum2')" style="position: absolute; left: 739px; top: 395px;"></div>
+      <div class="reflexologyPoint" id="lumbarSpine1" onclick="checkAnswer('lumbarSpine1')" style="position: absolute; left: 403px; top: 417px;"></div>
+      <div class="reflexologyPoint" id="lumbarSpine2" onclick="checkAnswer('lumbarSpine2')" style="position: absolute; left: 712px; top: 418px;"></div>
+      <div class="reflexologyPoint" id="ureter1" onclick="checkAnswer('ureter1')" style="position: absolute; left: 374px; top: 441px;"></div>
+      <div class="reflexologyPoint" id="ureter2" onclick="checkAnswer('ureter2')" style="position: absolute; left: 739px; top: 441px;"></div>
+      <div class="reflexologyPoint" id="bladder1" onclick="checkAnswer('bladder1')" style="position: absolute; left: 405px; top: 466px;"></div>
+      <div class="reflexologyPoint" id="bladder2" onclick="checkAnswer('bladder2')" style="position: absolute; left: 702px; top: 466px;"></div>
+      <div class="reflexologyPoint" id="smallIntestine" onclick="checkAnswer('smallIntestine')" style="position: absolute; left: 375px; top: 459px;"></div>
+      <div class="reflexologyPoint" id="rectum" onclick="checkAnswer('rectum')" style="position: absolute; left: 713px; top: 480px;"></div>
+      <div class="reflexologyPoint" id="sacrum1" onclick="checkAnswer('sacrum1')" style="position: absolute; left: 409px; top: 518px;"></div>
+      <div class="reflexologyPoint" id="sacrum2" onclick="checkAnswer('sacrum2')" style="position: absolute; left: 704px; top: 520px;"></div>
+      <div class="reflexologyPoint" id="spleen" onclick="checkAnswer('spleen')" style="position: absolute; left: 811px; top: 379px;"></div>
+      <div class="reflexologyPoint" id="descendingColon" onclick="checkAnswer('descendingColon')" style="position: absolute; left: 798px; top: 485px;"></div
+      
+    </div>
+
+      <div id="answerMessage"></div>
+      <div id="score">Score: 0</div>
+
+    </div>
+
+    <script>
+const reflexologyPointsArray = [
+  { bodyPart: "Lower back/gluteal area", points: ["lowerBackGlutealArea1", "lowerBackGlutealArea2"] },
+  { bodyPart: "Sciatic nerve", points: ["sciaticNerve1", "sciaticNerve2"] },
+  { bodyPart: "Ascending colon", points: ["ascendingColon"] },
+  { bodyPart: "Leg/knee", points: ["legKnee1", "legKnee2"] },
+  { bodyPart: "Elbow", points: ["elbow1", "elbow2"] },
+  { bodyPart: "Kidney", points: ["kidney1", "kidney2"] },
+  { bodyPart: "Liver", points: ["liver1", "liver2"] },
+  { bodyPart: "Gall bladder", points: ["gallBladder"] },
+  { bodyPart: "Diaphragm/solar plexus", points: ["diaphragmSolarPlexus1", "diaphragmSolarPlexus2"] },
+  { bodyPart: "Shoulder", points: ["shoulder1", "shoulder2"] },
+  { bodyPart: "Arm", points: ["arm1", "arm2"] },
+  { bodyPart: "Armpit", points: ["armpit1", "armpit2"] },
+  { bodyPart: "Eye/ear", points: ["eyeEar1", "eyeEar2"] },
+  { bodyPart: "Neck", points: ["neck1", "neck2"] },
+  { bodyPart: "Teeth/sinuses", points: ["teethSinuses1", "teethSinuses2", "teethSinuses3", "teethSinuses4", "teethSinuses5", "teethSinuses6", "teethSinuses7", "teethSinuses8"] },
+  { bodyPart: "Head/brain", points: ["headBrain1", "headBrain2"] },
+  { bodyPart: "Pituitary", points: ["pituitary1", "pituitary2"] },
+  { bodyPart: "Throat", points: ["throat1", "throat2"] },
+  { bodyPart: "Thyroid/parathyroid", points: ["thyroidParathyroid1", "thyroidParathyroid2"] },
+  { bodyPart: "Trapezius", points: ["trapezius1", "trapezius2"] },
+  { bodyPart: "Esophagus", points: ["esophagus1", "esophagus2"] },
+  { bodyPart: "Cervical spine", points: ["cervicalSpine"] },
+  { bodyPart: "Heart", points: ["heart"] },
+  { bodyPart: "Stomach", points: ["stomach1", "stomach2"] },
+  { bodyPart: "Adrenals", points: ["adrenals1", "adrenals2"] },
+  { bodyPart: "Pancreas", points: ["pancreas1", "pancreas2"] },
+  { bodyPart: "Duodenum", points: ["duodenum1", "duodenum2"] },
+  { bodyPart: "Lumbar spine", points: ["lumbarSpine1", "lumbarSpine2"] },
+  { bodyPart: "Ureter", points: ["ureter1", "ureter2"] },
+  { bodyPart: "Bladder", points: ["bladder1", "bladder2"] },
+  { bodyPart: "Small intestine", points: ["smallIntestine"] },
+  { bodyPart: "Rectum", points: ["rectum"] },
+  { bodyPart: "Sacrum", points: ["sacrum1", "sacrum2"] },
+  { bodyPart: "Spleen", points: ["spleen"] },
+  { bodyPart: "Descending colon", points: ["descendingColon"] }
+  // Add other body parts with associated reflex points
+];
+
+     
+        const reflexologyPointsData = {
+          "reflexologyPoints": {
+            "lowerBackGlutealArea1": {"x": 325, "y": 542},
+            "lowerBackGlutealArea2": {"x": 790, "y": 543},
+            "sciaticNerve1": {"x": 304, "y": 501},
+            "sciaticNerve2": {"x": 803, "y": 502},
+            "ascendingColon": {"x": 315, "y": 489},
+      "legKnee1": {"x": 292, "y": 462},
+      "legKnee2": {"x": 821, "y": 462},
+      "elbow1": {"x": 291, "y": 434},
+      "elbow2": {"x": 820, "y": 434},
+      "kidney1": {"x": 338, "y": 399},
+      "kidney2": {"x": 772, "y": 400},
+      "liver1": {"x": 293, "y": 388},
+      "liver2": {"x": 827, "y": 394},
+      "gallBladder": {"x": 303, "y": 370},
+      "diaphragmSolarPlexus1": {"x": 273, "y": 334},
+      "diaphragmSolarPlexus2": {"x": 839, "y": 334},
+      "shoulder1": {"x": 281, "y": 312},
+      "shoulder2": {"x": 834, "y": 311},
+      "arm1": {"x": 260, "y": 286},
+      "arm2": {"x": 853, "y": 286},
+      "armpit1": {"x": 266, "y": 262},
+      "armpit2": {"x": 846, "y": 261},
+      "eyeEar1": {"x": 283, "y": 247},
+      "eyeEar2": {"x": 829, "y": 245},
+      "neck1": {"x": 271, "y": 232},
+      "neck2": {"x": 839, "y": 232},
+      "teethSinuses1": {"x": 271, "y": 225},
+      "teethSinuses2": {"x": 299, "y": 208},
+      "teethSinuses3": {"x": 327, "y": 181},
+      "teethSinuses4": {"x": 360, "y": 178},
+      "teethSinuses5": {"x": 752, "y": 179},
+      "teethSinuses6": {"x": 786, "y": 188},
+      "teethSinuses7": {"x": 815, "y": 207},
+      "teethSinuses8": {"x": 838, "y": 232},
+      "headBrain1": {"x": 409, "y": 142},
+      "headBrain2": {"x": 703, "y": 145},
+      "pituitary1": {"x": 396, "y": 166},
+      "pituitary2": {"x": 713, "y": 167},
+      "throat1": {"x": 388, "y": 200},
+      "throat2": {"x": 727, "y": 196},
+      "thyroidParathyroid1": {"x": 405, "y": 197},
+      "thyroidParathyroid2": {"x": 708, "y": 196},
+      "trapezius1": {"x": 358, "y": 218},
+      "trapezius2": {"x": 749, "y": 216},
+      "esophagus1": {"x": 401, "y": 247},
+      "esophagus2": {"x": 709, "y": 243},
+      "cervicalSpine": {"x": 415, "y": 296},
+      "heart": {"x": 771, "y": 275},
+      "stomach1": {"x": 380, "y": 327},
+      "stomach2": {"x": 729, "y": 328},
+      "adrenals1": {"x": 352, "y": 353},
+      "adrenals2": {"x": 760, "y": 353},
+      "pancreas1": {"x": 376, "y": 377},
+      "pancreas2": {"x": 738, "y": 377},
+      "duodenum1": {"x": 377, "y": 395},
+      "duodenum2": {"x": 739, "y": 395},
+      "lumbarSpine1": {"x": 403, "y": 417},
+      "lumbarSpine2": {"x": 712, "y": 418},
+      "ureter1": {"x": 374, "y": 441},
+      "ureter2": {"x": 739, "y": 441},
+      "bladder1": {"x": 405, "y": 466},
+      "bladder2": {"x": 702, "y": 466},
+      "smallIntestine": {"x": 375, "y": 459},
+      "rectum": {"x": 713, "y": 480},
+      "sacrum1": {"x": 409, "y": 518},
+      "sacrum2": {"x": 704, "y": 520},
+      "spleen": {"x": 811, "y": 379},
+      "descendingColon": {"x": 798, "y": 485},
+            // Add other reflexology points with respective coordinates
+          }
+        };
+     
+        let currentIndex = 0;
+        let score = 0;
+        let questionAnswered = false; // Track if the current question has been answered
+     
+        Object.keys(reflexologyPointsData.reflexologyPoints).forEach(pointId => {
+          const reflexologyPointElement = document.getElementById(pointId);
+     
+          reflexologyPointElement.style.left = `${reflexologyPointsData.reflexologyPoints[pointId].x}px`;
+          reflexologyPointElement.style.top = `${reflexologyPointsData.reflexologyPoints[pointId].y}px`;
+     
+          reflexologyPointElement.addEventListener('click', () => {
+            checkAnswer(pointId);
+          });
+        });
+     
+        function displayNextBodyPart() {
+  if (currentIndex < reflexologyPointsArray.length) {
+    const currentBodyPart = reflexologyPointsArray[currentIndex].bodyPart;
+    document.getElementById("bodyPartName").innerText = currentBodyPart;
+    document.getElementById("answerMessage").innerText = ''; // Clear previous answer message
+    currentIndex++;
+    questionAnswered = false; // Reset the flag for the next question
+
+    // Enable the "Next" button if there are more body parts
+    if (currentIndex < reflexologyPointsArray.length) {
+      document.getElementById("nextButton").disabled = false;
+    } else {
+      // Disable the "Next" button if there are no more body parts
+      document.getElementById("nextButton").disabled = true;
+    }
+  }
+}
+
+        function checkAnswer(clickedPoint) {
+          if (!questionAnswered) {
+            const currentBodyPart = reflexologyPointsArray[currentIndex - 1].bodyPart;
+            const validPoints = reflexologyPointsArray[currentIndex - 1].points;
+            const answerMessageElement = document.getElementById("answerMessage");
+            const scoreElement = document.getElementById("score");
+     
+            if (validPoints.includes(clickedPoint)) {
+              score += 10;
+              answerMessageElement.innerText = `Correct Answer`;
+            } else {
+              score -= 5;
+              answerMessageElement.innerText = `Wrong Answer`;
+            }
+     
+            // Update the score display
+            scoreElement.innerText = `Score: ${score}`;
+            questionAnswered = true; // Set the flag to indicate the question has been answered
+          }
+     
+          // Disable the "Next" button until the next question is displayed
+          
+        }
+     
+        // Display the first body part initially
+        displayNextBodyPart();
+     </script>
+     
+  </div>
+
+</body>
+
+</html>

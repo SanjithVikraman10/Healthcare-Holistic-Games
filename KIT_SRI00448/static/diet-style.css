@@ -1,0 +1,237 @@
+/* Updated CSS for positioning start container to the left side */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fffcfc;
+  }
+  
+  #start-container {
+    text-align: center;
+    margin-top: 10px;
+    position: fixed;
+    top: 50%;
+    left: 90px; /* Adjust the left distance as needed */
+    transform: translateY(-50%);
+    padding-bottom: 40px;
+  }
+  
+  #start-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  #start-btn {
+    padding: 8px 40px;
+    font-size: 1.2em;
+    background-color: #297bb2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px; 
+    
+  }
+  
+  #start-btn:hover {
+    background-color: #1e5a81;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  #start-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #start-btn {
+    padding: 10px 40px;
+    font-size: 1.2em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  #start-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .left-side {
+    position: absolute;
+    top: 50%;
+    left: 260px; /* Adjust the left position as needed */
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000; /* Ensure the draggable items are above other elements */
+}
+
+.draggable-item {
+cursor: pointer;
+user-select: none;
+display: flex;
+align-items: center;
+margin-left: 80px;
+}
+
+/* Styles for emojis */
+.emoji {
+font-size: 34px; /* Adjust the size as needed */
+margin-right: 20px;
+margin-left: 140px; /* Provide spacing between emoji and text */
+}
+
+/* Styles for text */
+.food-text {
+font-size: 18px; /* Adjust the size as needed */
+color: #ffffff; /* Example color for the text */
+}
+
+
+  #main-container {
+    display: flex;
+  }
+  
+  .droparea {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    margin-left: 70px;
+    margin-top: 27.5px;
+  }
+  
+  .fruits {
+    background-color: rgb(255, 0, 111);
+    transform: translate(-50%, -50%)rotate(-90deg); 
+    height: 115px; 
+    width: 220px; 
+    border-radius: 150px 150px 0 0; 
+    top: 338px;
+    left: 742px;
+   
+  }
+  
+  .vegetables {
+    background-color: green;
+    transform: translate(-50%, -50%)rotate(90deg); 
+    height: 115px; 
+    width: 220px; 
+    border-radius: 150px 150px 0 0; 
+    top: 338px;
+    left: 867px;
+  }
+  
+  .grains {
+    background-color: rgb(108, 108, 234);
+    top: 338px;
+    left: 1002px;
+    border-radius: 80%;
+    height: 105px;
+    width: 110px;
+
+  }
+  
+  .proteins {
+    background-color: rgb(224, 65, 65);
+    top: 221px;
+    left: 1012px;
+    border-radius: 80%;
+    height: 88px;
+    width: 90px;
+  }
+  
+  .diary {
+    background-color: orange;
+    top: 121px;
+    left: 663px;
+    border-radius: 80%;
+    height: 88px;
+    width: 90px;
+  }
+
+  .category-name {
+    font-size: 20px; /* Adjust font size */
+    color: #fff; /* Change text color */
+    text-align: center; /* Align text */
+    margin-top: 40px; /* Adjust top margin */
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    
+}
+  
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    text-align: center; /* Center-align content */
+}
+
+#final-score {
+    display: inline; /* Display the score as a block element */
+    margin: 0px auto; /* Auto margins to center the score */
+}
+
+.exit-button {
+    padding: 7px 30px;
+    font-size: 1.2em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 0px;
+    margin-left: 40px;
+}
+
+.exit-button:hover {
+    background-color: #2980b9;
+}
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

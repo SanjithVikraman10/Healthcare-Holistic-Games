@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Curved Image on Transparent Box</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='diet-style.css') }}">
+
+    <style>
+        body {
+            margin: 0;
+            background-image: url('static\\img\\diet-bg.jpg'); 
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .transparent-box {
+            width: 1200px;
+            height: 540px;
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white box */
+            border-radius: 20px; /* Rounded corners */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0px;
+            margin-top: 10px;
+        }
+
+        .curved-image {
+            width: 500px;
+            height: 380px;
+            border-radius: 20px; /* Matching border-radius for curved edges */
+            margin-left: 500px;
+            margin-top: -20px;
+        }
+
+        .timer-style {
+            position: absolute;
+            bottom: 260px;
+            left: 90px;
+            font-size: 30px;
+            color: #fff;
+            display: block;
+            font-weight: 900;
+        }
+        
+        .score-style {
+            position: absolute;
+            bottom: 310px; /* Adjust this value as needed */
+            left: 130px;
+            font-size: 30px;
+            color: #ffffff;
+            display: block;
+            font-weight: 900;
+        }
+        p {
+            margin-bottom: 20px; /* Add margin-bottom for spacing */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="transparent-box">
+        <img class="curved-image" src="static\\img\\plate.png" alt="Curved Image">
+        <div id="timer" class="timer-style" style="display: none; margin-left: 80px">Time left: <span id="time-left">30</span> s</div>
+        <div id="score" class="score-style" style="display: none; margin-left: 80px">Score: <span id="current-score">0</span></div>
+    </div>
+    <body>
+
+        <div id="start-container">
+          <h1 style="font-size:40px;font-weight: bold; margin-left: 80px">Welcome to the Diet Plan</h1>
+          <p style="font-size:20px;font-weight: bold; margin-left: 80px">Match the items in the given order to their<br>
+            correct categories within 30 seconds!</p>
+
+          <p style="font-size:18px; margin-left: 80px">REMEMBER, A BALANCED DIET IS ESSENTIAL FOR<br>
+            OPTIMAL HEALTH AND WELLNESS.</p>
+
+          <p style="margin-left: 80px">Click the button below to start playing!</p>
+          <button style="margin-left: 80px" id="start-btn">Start</button>
+        </div>
+        <div class="left-side" style="display: none;">
+            <div class="draggable-item" data-item-type="fruits">
+                <span class="emoji">🍎</span>
+                <span class="food-text">Apple</span>
+            </div>
+            <div class="draggable-item" data-item-type="fruits">
+                <span class="emoji">🍌</span>
+                <span class="food-text">Banana</span>
+            </div>
+            <div class="draggable-item" data-item-type="grains">
+                <span class="emoji">🍞</span>
+                <span class="food-text">Bread</span>
+            </div>
+            <div class="draggable-item" data-item-type="proteins">
+                <span class="emoji">🍗</span>
+                <span class="food-text">Chicken</span>
+            </div>
+            <div class="draggable-item" data-item-type="vegetables">
+                <span class="emoji">🥕</span>
+                <span class="food-text">Carrot</span>
+            </div>
+            <div class="draggable-item" data-item-type="diary">
+                <span class="emoji">🥛</span>
+                <span class="food-text">Milk</span>
+            </div>
+            <div class="draggable-item" data-item-type="fruits">
+                <span class="emoji">🥝</span>
+                <span class="food-text">Kiwi</span>
+            </div>
+            <div class="draggable-item" data-item-type="fruits">
+                <span class="emoji">🥥</span>
+                <span class="food-text">Coconut</span>
+            </div>
+            <div class="draggable-item" data-item-type="grains">
+                <span class="emoji">🍛</span>
+                <span class="food-text">Rice</span>
+            </div>
+            <div class="draggable-item" data-item-type="diary">
+                <span class="emoji">🧈</span>
+                <span class="food-text">Ghee</span>
+            </div>
+            <!-- Add more draggable items as needed -->
+        </div>
+        
+        
+        <div id="main-container" style="display: none;">
+            <div class="droparea fruits" data-area-type="fruits">
+                <h2 class="category-name">Fruits</h2>
+            </div>
+            <div class="droparea vegetables" data-area-type="vegetables">
+                <h2 class="category-name">Vegetables</h2>
+            </div>
+            <div class="droparea grains" data-area-type="grains">
+                <h2 class="category-name">Grains</h2>
+            </div>
+            <div class="droparea proteins" data-area-type="proteins">
+                <h2 class="category-name">Proteins</h2>
+            </div>
+            <div class="droparea diary" data-area-type="diary">
+                <h2 class="category-name">Diary</h2>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal" style="display: none;">
+            <div class="modal-content" style="text-align: center;">
+                <span class="close">&times;</span>
+                <p style="font-weight: 800; font-size:20px; display: inline-block;">Score: <span id="final-score">0</span></p>
+                <button id="exitBtn" class="exit-button">Exit</button>
+            </div>
+        </div>
+        
+        <script src="static\\js\\diet-script.js"></script>
+        </body>
+</body>
+</html>

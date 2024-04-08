@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>User Authentication</title>
+</head>
+<body>
+    
+    <div id = 'index'>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center py-4">
+                <h1>Welcome to Svasthya!</h1>
+                <p>
+                    Our mission is to reach the unreachable. 
+                    Join us in making a difference by connecting patients, doctors, pharmacists, and hospitals.
+                </p>
+            </div>
+            <!-- Left Column (Signup) -->
+            <div class="col-md-6">
+                <div class="form-container">
+                    <h2>Sign Up</h2>
+                    <form action="/signup" method="POST">
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <label for="role">Select Role:</label>
+                        <select name="role" id="role" required>
+                            <option value="patient">Patient</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="pharmacist">Pharmacist</option>
+                            <option value="hospital">Hospital</option>
+                        </select>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column (Login) -->
+            <div class="col-md-6">
+                <div class="form-container">
+                    <h2>Login</h2>
+                    <form action="/login" method="POST">
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <label for="role">Select Role:</label>
+                        <select name="role" id="role" required>
+                            <option value="patient">Patient</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="pharmacist">Pharmacist</option>
+                            <option value="hospital">Hospital</option>
+                        </select>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
